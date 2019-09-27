@@ -30,3 +30,6 @@ _ReSharper*/
 
 # JetBrains Rider
 .idea/
+
+# Nuget.exe
+Nuget.exe
