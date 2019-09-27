@@ -16,3 +16,6 @@ All packages for backend applications.
 
 ##### Manage tokens
 https://github.com/settings/tokens
+
+##### Nuget.exe
+https://www.nuget.org/downloads
