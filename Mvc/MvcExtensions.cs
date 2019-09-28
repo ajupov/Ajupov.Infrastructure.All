@@ -17,8 +17,9 @@ namespace Ajupov.Infrastructure.All.Mvc
                     x.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
-                .AddControllersAsServices()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            services.AddDataProtection();
 
             return services;
         }
