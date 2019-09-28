@@ -1,9 +1,9 @@
-﻿using Infrastructure.All.HotStorage.HotStorage;
+﻿using Ajupov.Infrastructure.All.HotStorage.HotStorage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack.Redis;
 
-namespace Infrastructure.All.HotStorage
+namespace Ajupov.Infrastructure.All.HotStorage
 {
     public static class MailSendingExtensions
     {
@@ -12,7 +12,7 @@ namespace Infrastructure.All.HotStorage
             IConfiguration configuration)
         {
             return services
-                .AddSingleton<IHotStorage, global::Infrastructure.All.HotStorage.HotStorage.HotStorage>()
+                .AddSingleton<IHotStorage, global::Ajupov.Infrastructure.All.HotStorage.HotStorage.HotStorage>()
                 .AddSingleton<IRedisClientsManager>(x =>
                     new RedisManagerPool(configuration.GetConnectionString("HotStorageConnectionString")));
         }

@@ -1,8 +1,8 @@
-﻿using Infrastructure.All.Orm.Settings;
+﻿using Ajupov.Infrastructure.All.Orm.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.Orm
+namespace Ajupov.Infrastructure.All.Orm
 {
     public static class OrmExtensions
     {

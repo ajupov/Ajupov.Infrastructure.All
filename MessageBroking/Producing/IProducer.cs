@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.All.MessageBroking.Models;
+using Ajupov.Infrastructure.All.MessageBroking.Models;
 
-namespace Infrastructure.All.MessageBroking.Producing
+namespace Ajupov.Infrastructure.All.MessageBroking.Producing
 {
     public interface IProducer
     {

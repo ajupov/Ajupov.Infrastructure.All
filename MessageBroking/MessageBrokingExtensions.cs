@@ -1,10 +1,10 @@
-﻿using Infrastructure.All.MessageBroking.Consuming;
-using Infrastructure.All.MessageBroking.Settings;
+﻿using Ajupov.Infrastructure.All.MessageBroking.Consuming;
+using Ajupov.Infrastructure.All.MessageBroking.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Infrastructure.All.MessageBroking
+namespace Ajupov.Infrastructure.All.MessageBroking
 {
     public static class MessageBrokingExtensions
     {

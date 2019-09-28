@@ -1,9 +1,9 @@
-﻿using Infrastructure.All.SmsSending.Settings;
-using Infrastructure.All.SmsSending.SmsSender;
+﻿using Ajupov.Infrastructure.All.SmsSending.Settings;
+using Ajupov.Infrastructure.All.SmsSending.SmsSender;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.SmsSending
+namespace Ajupov.Infrastructure.All.SmsSending
 {
     public static class MailSendingExtensions
     {

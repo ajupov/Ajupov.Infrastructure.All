@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Infrastructure.All.MailSending.MailSender
+namespace Ajupov.Infrastructure.All.MailSending.MailSender
 {
     public interface IMailSender
     {

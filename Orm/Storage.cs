@@ -1,8 +1,8 @@
-using Infrastructure.All.Orm.Settings;
+using Ajupov.Infrastructure.All.Orm.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace Infrastructure.All.Orm
+namespace Ajupov.Infrastructure.All.Orm
 {
     public class Storage : DbContext
     {

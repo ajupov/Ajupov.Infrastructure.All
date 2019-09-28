@@ -1,12 +1,12 @@
-﻿using Infrastructure.All.Metrics.Collector;
-using Infrastructure.All.Metrics.Settings;
+﻿using Ajupov.Infrastructure.All.Metrics.Collector;
+using Ajupov.Infrastructure.All.Metrics.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Prometheus;
 
-namespace Infrastructure.All.Metrics
+namespace Ajupov.Infrastructure.All.Metrics
 {
     public static class MetricsExtensions
     {

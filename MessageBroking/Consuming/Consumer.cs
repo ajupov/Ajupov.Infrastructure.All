@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Ajupov.Infrastructure.All.MessageBroking.Models;
+using Ajupov.Infrastructure.All.MessageBroking.Settings;
 using Confluent.Kafka;
-using Infrastructure.All.MessageBroking.Models;
-using Infrastructure.All.MessageBroking.Settings;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Infrastructure.All.MessageBroking.Consuming
+namespace Ajupov.Infrastructure.All.MessageBroking.Consuming
 {
     public class Consumer : IConsumer
     {

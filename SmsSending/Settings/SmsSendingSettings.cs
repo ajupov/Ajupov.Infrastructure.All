@@ -1,4 +1,4 @@
-namespace Infrastructure.All.SmsSending.Settings
+namespace Ajupov.Infrastructure.All.SmsSending.Settings
 {
     public class SmsSendingSettings
     {

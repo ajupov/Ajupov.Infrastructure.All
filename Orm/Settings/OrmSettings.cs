@@ -1,4 +1,4 @@
-namespace Infrastructure.All.Orm.Settings
+namespace Ajupov.Infrastructure.All.Orm.Settings
 {
     public class OrmSettings
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.All.MessageBroking.Models
+namespace Ajupov.Infrastructure.All.MessageBroking.Models
 {
     public class Message
     {

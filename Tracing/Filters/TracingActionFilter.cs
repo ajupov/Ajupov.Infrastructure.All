@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using OpenTracing;
 
-namespace Infrastructure.All.Tracing.Filters
+namespace Ajupov.Infrastructure.All.Tracing.Filters
 {
     public class TracingActionFilter : IAsyncActionFilter
     {

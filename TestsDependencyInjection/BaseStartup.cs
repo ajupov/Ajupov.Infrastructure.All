@@ -2,7 +2,7 @@
 using Xunit.DependencyInjection;
 using Xunit.Sdk;
 
-namespace Infrastructure.All.TestsDependencyInjection
+namespace Ajupov.Infrastructure.All.TestsDependencyInjection
 {
     public class BaseStartup : DependencyInjectionTestFramework
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Infrastructure.All.SmsSending.SmsSender
+namespace Ajupov.Infrastructure.All.SmsSending.SmsSender
 {
     public interface ISmsSender
     {

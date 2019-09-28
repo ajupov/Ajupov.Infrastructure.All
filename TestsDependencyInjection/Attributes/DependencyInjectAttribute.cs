@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit.Sdk;
 
-namespace Infrastructure.All.TestsDependencyInjection.Attributes
+namespace Ajupov.Infrastructure.All.TestsDependencyInjection.Attributes
 {
     [TestFrameworkDiscoverer("Xunit.Sdk.TestFrameworkTypeDiscoverer", "xunit.execution.{Platform}")]
     [AttributeUsage(AttributeTargets.Assembly)]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Infrastructure.All.ApiDocumentation
+namespace Ajupov.Infrastructure.All.ApiDocumentation
 {
     public static class ApiDocumentationExtensions
     {

@@ -1,4 +1,4 @@
-namespace Infrastructure.All.Metrics.Settings
+namespace Ajupov.Infrastructure.All.Metrics.Settings
 {
     public class MetricsSettings
     {

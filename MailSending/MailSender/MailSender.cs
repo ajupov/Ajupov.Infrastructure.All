@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Infrastructure.All.MailSending.Settings;
+using Ajupov.Infrastructure.All.MailSending.Settings;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
 
-namespace Infrastructure.All.MailSending.MailSender
+namespace Ajupov.Infrastructure.All.MailSending.MailSender
 {
     public class MailSender : IMailSender
     {

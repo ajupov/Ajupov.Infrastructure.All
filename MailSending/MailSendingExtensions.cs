@@ -1,9 +1,9 @@
-﻿using Infrastructure.All.MailSending.MailSender;
-using Infrastructure.All.MailSending.Settings;
+﻿using Ajupov.Infrastructure.All.MailSending.MailSender;
+using Ajupov.Infrastructure.All.MailSending.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.MailSending
+namespace Ajupov.Infrastructure.All.MailSending
 {
     public static class MailSendingExtensions
     {
@@ -12,7 +12,7 @@ namespace Infrastructure.All.MailSending
             IConfiguration configuration)
         {
             services.Configure<MailSendingSettings>(configuration.GetSection("MailSendingSettings"))
-                .AddSingleton<IMailSender, global::Infrastructure.All.MailSending.MailSender.MailSender>()
+                .AddSingleton<IMailSender, global::Ajupov.Infrastructure.All.MailSending.MailSender.MailSender>()
                 .BuildServiceProvider();
 
             return services;

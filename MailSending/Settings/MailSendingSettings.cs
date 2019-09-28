@@ -1,4 +1,4 @@
-namespace Infrastructure.All.MailSending.Settings
+namespace Ajupov.Infrastructure.All.MailSending.Settings
 {
     public class MailSendingSettings
     {

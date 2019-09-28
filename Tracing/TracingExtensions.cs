@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OpenTracing;
 using OpenTracing.Util;
 
-namespace Infrastructure.All.Tracing
+namespace Ajupov.Infrastructure.All.Tracing
 {
     public static class TracingExtensions
     {

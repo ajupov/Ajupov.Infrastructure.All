@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.Mvc
+namespace Ajupov.Infrastructure.All.Mvc
 {
     public static class MvcExtensions
     {
@@ -13,9 +13,11 @@ namespace Infrastructure.All.Mvc
             services
                 .AddMvc(x =>
                 {
+                    x.EnableEndpointRouting = false;
                     x.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
+                .AddControllersAsServices()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             return services;
@@ -23,14 +25,6 @@ namespace Infrastructure.All.Mvc
 
         public static IApplicationBuilder UseMvcMiddleware(this IApplicationBuilder applicationBuilder)
         {
-//            applicationBuilder.UseHttpsRedirection();
-//
-//            applicationBuilder.UseRouting();
-//
-//            applicationBuilder.UseAuthorization();
-//
-//            applicationBuilder.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
             return applicationBuilder.UseMvc();
         }
     }

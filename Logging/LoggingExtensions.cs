@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace Infrastructure.All.Logging
+namespace Ajupov.Infrastructure.All.Logging
 {
     public static class LoggingExtensions
     {

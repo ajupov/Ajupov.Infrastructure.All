@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.All.Configuration
+namespace Ajupov.Infrastructure.All.Configuration
 {
     public static class ConfigurationExtensions
     {

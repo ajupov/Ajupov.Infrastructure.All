@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.OAuthClients
+namespace Ajupov.Infrastructure.All.OAuthClients
 {
     public static class OAuthClientsExtensions
     {

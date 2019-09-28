@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Infrastructure.All.Metrics.Settings;
+using Ajupov.Infrastructure.All.Metrics.Settings;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Prometheus;
 
-namespace Infrastructure.All.Metrics.Collector
+namespace Ajupov.Infrastructure.All.Metrics.Collector
 {
     public class MetricsCollector : IHostedService
     {

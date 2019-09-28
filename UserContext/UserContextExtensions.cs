@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.UserContext
+namespace Ajupov.Infrastructure.All.UserContext
 {
     public static class UserContextExtensions
     {

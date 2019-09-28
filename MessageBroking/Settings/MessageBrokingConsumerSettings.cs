@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.All.MessageBroking.Settings
+﻿namespace Ajupov.Infrastructure.All.MessageBroking.Settings
 {
     public class MessageBrokingConsumerSettings
     {

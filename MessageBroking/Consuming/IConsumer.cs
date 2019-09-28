@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Infrastructure.All.MessageBroking.Models;
+using Ajupov.Infrastructure.All.MessageBroking.Models;
 
-namespace Infrastructure.All.MessageBroking.Consuming
+namespace Ajupov.Infrastructure.All.MessageBroking.Consuming
 {
     public interface IConsumer
     {

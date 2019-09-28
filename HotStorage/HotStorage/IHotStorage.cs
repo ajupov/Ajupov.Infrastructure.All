@@ -1,6 +1,6 @@
 using System;
 
-namespace Infrastructure.All.HotStorage.HotStorage
+namespace Ajupov.Infrastructure.All.HotStorage.HotStorage
 {
     public interface IHotStorage
     {

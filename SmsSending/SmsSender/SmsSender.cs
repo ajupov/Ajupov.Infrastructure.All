@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.All.SmsSending.Settings;
+using Ajupov.Infrastructure.All.SmsSending.Settings;
 using MainSMS;
 using Microsoft.Extensions.Options;
 
-namespace Infrastructure.All.SmsSending.SmsSender
+namespace Ajupov.Infrastructure.All.SmsSending.SmsSender
 {
     public class SmsSender : ISmsSender
     {

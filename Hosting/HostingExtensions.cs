@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.All.Hosting
+namespace Ajupov.Infrastructure.All.Hosting
 {
     public static class HostingExtensions
     {

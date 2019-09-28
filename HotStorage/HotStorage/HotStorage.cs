@@ -1,7 +1,7 @@
 using System;
 using ServiceStack.Redis;
 
-namespace Infrastructure.All.HotStorage.HotStorage
+namespace Ajupov.Infrastructure.All.HotStorage.HotStorage
 {
     public class HotStorage : IHotStorage
     {

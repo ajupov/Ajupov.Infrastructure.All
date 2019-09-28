@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.All.Migrations
+namespace Ajupov.Infrastructure.All.Migrations
 {
     public static class MigrationsExtensions
     {
