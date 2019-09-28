@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace Ajupov.Infrastructure.All.ApiDocumentation
 {
@@ -13,7 +13,7 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
             this IServiceCollection services,
             string apiVersion = DefaultApiVersion)
         {
-            var info = new Info
+            var info = new OpenApiInfo
             {
                 Title = Assembly.GetCallingAssembly().GetName().Name,
                 Version = apiVersion
