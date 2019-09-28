@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -9,7 +10,7 @@ namespace Ajupov.Infrastructure.All.Logging
     {
         private const string Template = "[{Timestamp:o} - {Level:u3}]: {Message:lj}{NewLine}{Exception}";
 
-        public static IHostBuilder ConfigureLogging(this IHostBuilder hostBuilder)
+        public static IWebHostBuilder ConfigureLogging(this IWebHostBuilder hostBuilder)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name;
             var applicationVersion = Assembly.GetCallingAssembly().GetName().Name;
