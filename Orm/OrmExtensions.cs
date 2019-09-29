@@ -22,7 +22,7 @@ namespace Ajupov.Infrastructure.All.Orm
                 services.AddEntityFrameworkNpgsql();
             }
 
-            return services.AddDbContext<TStorage>(ServiceLifetime.Transient);
+            return services.AddTransient<TStorage>();
         }
     }
 }
