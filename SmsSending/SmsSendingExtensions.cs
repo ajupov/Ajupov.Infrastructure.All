@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Ajupov.Infrastructure.All.SmsSending
 {
-    public static class MailSendingExtensions
+    public static class SmsSendingExtensions
     {
-        public static IServiceCollection ConfigureMailSending(
+        public static IServiceCollection ConfigureSmsSending(
             this IServiceCollection services,
             IConfiguration configuration)
         {
