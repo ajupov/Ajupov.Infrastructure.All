@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
@@ -20,7 +19,7 @@ namespace Ajupov.Infrastructure.All.Logging
                 x.ClearProviders();
 
                 Log.Logger = new LoggerConfiguration()
-                    .MinimumLevel.Information()
+                    .MinimumLevel.Debug()
                     .Enrich.FromLogContext()
                     .WriteTo.Console(outputTemplate: Template)
                     .WriteTo.File($"{applicationName}_{applicationVersion}_.txt", rollingInterval: RollingInterval.Day,
