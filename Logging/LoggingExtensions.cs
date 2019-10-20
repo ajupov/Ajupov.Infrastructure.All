@@ -12,7 +12,7 @@ namespace Ajupov.Infrastructure.All.Logging
         public static IWebHostBuilder ConfigureLogging(this IWebHostBuilder hostBuilder)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name;
-            var applicationVersion = Assembly.GetCallingAssembly().GetName().Name;
+            var applicationVersion = Assembly.GetCallingAssembly().GetName().Version;
 
             return hostBuilder.ConfigureLogging(x =>
             {
@@ -22,8 +22,10 @@ namespace Ajupov.Infrastructure.All.Logging
                     .MinimumLevel.Debug()
                     .Enrich.FromLogContext()
                     .WriteTo.Console(outputTemplate: Template)
-                    .WriteTo.File($"{applicationName}_{applicationVersion}_.txt", rollingInterval: RollingInterval.Day,
-                        outputTemplate: Template, shared: true)
+                    .WriteTo.File($"{applicationName}_{applicationVersion}.log", 
+                        rollingInterval: RollingInterval.Day,
+                        outputTemplate: Template, 
+                        shared: true)
                     .CreateLogger();
 
                 x.AddSerilog(Log.Logger);
