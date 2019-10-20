@@ -22,7 +22,7 @@ namespace Ajupov.Infrastructure.All.Logging
                     .MinimumLevel.Debug()
                     .Enrich.FromLogContext()
                     .WriteTo.Console(outputTemplate: Template)
-                    .WriteTo.File($"{applicationName}_{applicationVersion}.log", 
+                    .WriteTo.File($"{applicationName}_{applicationVersion}_.log", 
                         rollingInterval: RollingInterval.Day,
                         outputTemplate: Template, 
                         shared: true)
