@@ -10,6 +10,7 @@ namespace Ajupov.Infrastructure.All.Configuration
             return new ConfigurationBuilder()
                 .SetBasePath(Environment.CurrentDirectory)
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.local.json", true)
                 .AddEnvironmentVariables()
                 .Build();
         }
