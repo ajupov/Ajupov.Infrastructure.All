@@ -12,7 +12,7 @@ namespace Ajupov.Infrastructure.All.HotStorage
             IConfiguration configuration)
         {
             return services
-                .AddSingleton<IHotStorage, global::Ajupov.Infrastructure.All.HotStorage.HotStorage.HotStorage>()
+                .AddSingleton<IHotStorage, HotStorage.HotStorage>()
                 .AddSingleton<IRedisClientsManager>(x =>
                     new RedisManagerPool(configuration.GetConnectionString("HotStorageConnectionString")));
         }

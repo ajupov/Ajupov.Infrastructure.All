@@ -3,7 +3,7 @@
 All packages for backend applications.
 
 ##### Add Nuget source
-```nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/ajupov/index.json" -UserName "ajupov" -Password "{API_KEY}"```
+```nuget source Add -Name "GitHub" -Source "{PACKAGE_SOURCE" -UserName "{USERNAME}" -Password "{API_KEY}"```
 
 ##### Set Nuget source ApiKey
 ```nuget setApiKey "{API_KEY}" -Source "GitHub"```

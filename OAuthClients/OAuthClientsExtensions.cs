@@ -11,14 +11,13 @@ namespace Ajupov.Infrastructure.All.OAuthClients
             IConfiguration configuration)
         {
             services.AddAuthentication()
-                .AddOAuth("Crm", x =>
+                .AddOAuth("Main", x =>
                 {
-                    var section = configuration.GetSection("CrmOauthClientSettings");
+                    var section = configuration.GetSection("MainOauthClientSettings");
 
                     x.ClientId = section.GetValue<string>("ClientId");
                     x.ClientSecret = section.GetValue<string>("ClientSecret");
-                    x.CallbackPath = "/CrmCallback";
-//                    x.Scope.Add("");
+                    x.CallbackPath = "/MainCallback";
                 })
                 .AddVkontakte(x =>
                 {
@@ -35,8 +34,8 @@ namespace Ajupov.Infrastructure.All.OAuthClients
                     x.ClientId = section.GetValue<string>("ClientId");
                     x.ClientSecret = section.GetValue<string>("ClientSecret");
                     x.CallbackPath = "/OdnoklassnikiCallback";
-//                    x.Scope.Add("VALUABLE_ACCESS");
-//                    x.Scope.Add("LONG_ACCESS_TOKEN");
+                    x.Scope.Add("VALUABLE_ACCESS");
+                    x.Scope.Add("LONG_ACCESS_TOKEN");
                 })
                 .AddInstagram(x =>
                 {
