@@ -40,8 +40,7 @@ namespace Ajupov.Infrastructure.All.MailSending.MailSender
                 return Task.CompletedTask;
             }
 
-            var from = new[]
-                {new MailboxAddress(!string.IsNullOrWhiteSpace(fromName) ? fromName : string.Empty, fromAddress)};
+            var from = new[] {new MailboxAddress(fromName, fromAddress)};
             var to = toAddressesArray.Select(x => new MailboxAddress(x, x));
             var textPart = new TextPart(isBodyHtml ? TextFormat.Html : TextFormat.Text) {Text = body};
 

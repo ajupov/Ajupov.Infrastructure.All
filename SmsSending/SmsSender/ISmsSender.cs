@@ -4,6 +4,6 @@ namespace Ajupov.Infrastructure.All.SmsSending.SmsSender
 {
     public interface ISmsSender
     {
-        Task SendAsync(string phoneNumber, string message);
+        Task SendAsync(string phoneNumber, string fromName, string message, bool isTestSms);
     }
 }
