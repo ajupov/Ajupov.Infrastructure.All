@@ -22,20 +22,20 @@ namespace Ajupov.Infrastructure.All.SmsSending.SmsSender
             _httpClientFactory = httpClientFactory;
         }
 
-        public Task SendAsync(string phoneNumber, string message)
+        public async Task<string> SendAsync(string phoneNumber, string message)
         {
             _logger.LogDebug("Send sms. To number: {0}. Message: {1}", phoneNumber, message);
 
             if (_settings.IsTestMode)
             {
-                return Task.CompletedTask;
+                return "{\"status\": \"OK\"}";
             }
 
             using var client = _httpClientFactory.CreateClient();
 
             var uri = $"https://sms.ru/sms/send?api_id={_settings.ApiKey}&to={phoneNumber}&msg={message}&json=1";
 
-            return client.GetStringAsync(uri);
+            return await client.GetStringAsync(uri);
         }
     }
 }
