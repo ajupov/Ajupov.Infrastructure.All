@@ -13,6 +13,7 @@ namespace Ajupov.Infrastructure.All.SmsSending
         {
             services.Configure<SmsSendingSettings>(configuration.GetSection("SmsSendingSettings"))
                 .AddSingleton<ISmsSender, SmsSender.SmsSender>()
+                .AddHttpClient()
                 .BuildServiceProvider();
 
             return services;
