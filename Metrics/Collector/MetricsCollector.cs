@@ -13,7 +13,7 @@ namespace Ajupov.Infrastructure.All.Metrics.Collector
 
         public MetricsCollector(IOptions<MetricsSettings> options)
         {
-            _metricsServer = new KestrelMetricServer("localhost", options.Value.Port);
+            _metricsServer = new KestrelMetricServer(options.Value.Host, options.Value.Port);
         }
 
         public Task StartAsync(CancellationToken ct)
