@@ -12,7 +12,7 @@ namespace Ajupov.Infrastructure.All.Logging
 
         public static IWebHostBuilder ConfigureLogging(this IWebHostBuilder hostBuilder, IConfiguration configuration)
         {
-            var applicationName = Assembly.GetCallingAssembly().GetName().Name;
+            var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
             var applicationVersion = Assembly.GetCallingAssembly().GetName().Version;
             var host = configuration.GetValue<string>("LoggingHost");
 
@@ -23,8 +23,10 @@ namespace Ajupov.Infrastructure.All.Logging
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Debug()
                     .Enrich.FromLogContext()
+                    .Enrich.WithProperty("applicationName", applicationName)
+                    .Enrich.WithProperty("applicationVersion", applicationVersion)
                     .Enrich.With()
-                    .WriteTo.Elasticsearch(host, autoRegisterTemplate: true)
+                    .WriteTo.Elasticsearch(host, autoRegisterTemplate: true, indexFormat: applicationName)
                     .WriteTo.Console(outputTemplate: Template)
                     .CreateLogger();
 
