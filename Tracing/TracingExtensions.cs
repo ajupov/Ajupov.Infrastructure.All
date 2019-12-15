@@ -12,22 +12,21 @@ namespace Ajupov.Infrastructure.All.Tracing
     {
         public static IServiceCollection ConfigureTracing(this IServiceCollection services)
         {
-            var applicationName = Assembly.GetCallingAssembly().GetName().Name;
+            var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
 
-            services.AddOpenTracing();
-            services.AddSingleton<ITracer>(x =>
-            {
-                var loggerFactory = x.GetRequiredService<ILoggerFactory>();
+            services
+                .AddOpenTracing()
+                .AddSingleton<ITracer>(x =>
+                {
+                    var tracer = new Tracer.Builder(applicationName)
+                        .WithLoggerFactory(x.GetRequiredService<ILoggerFactory>())
+                        .WithSampler(new ConstSampler(true))
+                        .Build();
 
-                var tracer = new Tracer.Builder(applicationName)
-                    .WithLoggerFactory(loggerFactory)
-                    .WithSampler(new ConstSampler(true))
-                    .Build();
+                    GlobalTracer.Register(tracer);
 
-                GlobalTracer.Register(tracer);
-
-                return tracer;
-            });
+                    return tracer;
+                });
 
             return services;
         }

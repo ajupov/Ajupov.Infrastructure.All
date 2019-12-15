@@ -8,8 +8,6 @@ namespace Ajupov.Infrastructure.All.Logging
 {
     public static class LoggingExtensions
     {
-        private const string Template = "[{Timestamp:o} - {Level:u3}]: {Message:lj}{NewLine}{Exception}";
-
         public static IWebHostBuilder ConfigureLogging(this IWebHostBuilder hostBuilder, IConfiguration configuration)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
@@ -21,13 +19,12 @@ namespace Ajupov.Infrastructure.All.Logging
                 x.ClearProviders();
 
                 Log.Logger = new LoggerConfiguration()
-                    .MinimumLevel.Debug()
+                    .MinimumLevel.Information()
                     .Enrich.FromLogContext()
                     .Enrich.WithProperty("applicationName", applicationName)
                     .Enrich.WithProperty("applicationVersion", applicationVersion)
-                    .Enrich.With()
                     .WriteTo.Elasticsearch(host, autoRegisterTemplate: true, indexFormat: applicationName)
-                    .WriteTo.Console(outputTemplate: Template)
+                    .WriteTo.Console()
                     .CreateLogger();
 
                 x.AddSerilog(Log.Logger);
