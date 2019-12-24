@@ -20,8 +20,8 @@ jobs:
       - name: Generate package
         run: dotnet pack --configuration Release
       
-      - name: Install nuget.exe
-        uses: warrenbuckley/Setup-Nuget@v1
+      - name: Install nuget
+        run: sudo apt install nuget
   
       - name: Add registry
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
