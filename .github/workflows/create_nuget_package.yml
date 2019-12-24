@@ -18,7 +18,7 @@ jobs:
           dotnet-version: '3.1.100' 
       
       - name: Generate package
-        run: dotnet pack --configuration Release
+        run: dotnet pack --configuration Release --output out 
       
       - name: Install nuget
         run: sudo apt install nuget
@@ -27,4 +27,4 @@ jobs:
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
   
       - name: Push package
-        run: nuget push .\bin\Release\*.nupkg -Source "GPR" -SkipDuplicate
+        run: nuget push .\Ajupov.Infrastructure.All\out\*.nupkg -Source "GPR"
