@@ -2,15 +2,7 @@
 
 All packages for backend applications.
 
-## Packaging
-
-##### Pack
-```dotnet pack --configuration Release```
-
-##### Push
-```nuget push ".\bin\Release\Ajupov.Infrastructure.All.{version}.nupkg" -Source "GitHub"```
-
-## Configure
+## Usage
 
 ```
 public static class Program
