@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -19,12 +19,13 @@ jobs:
       
       - name: Generate package
         run: dotnet pack --configuration Release
-      
-      - name: Install nuget
-        uses: warrenbuckley/Setup-Nuget@v1
+        shell: bash
+        
+#       - name: Install nuget
+#         uses: warrenbuckley/Setup-Nuget@v1
   
       - name: Add registry
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
   
       - name: Push package
-        run: nuget push ./bin/Release/*.nupkg -Source "GPR"
+        run: nuget push ./Ajupov.Infrastructure.All/bin/Release/*.nupkg -Source "GPR"
