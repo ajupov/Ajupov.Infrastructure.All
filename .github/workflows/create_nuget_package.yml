@@ -28,4 +28,10 @@ jobs:
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
   
       - name: Push package
-        run: nuget push ./Ajupov.Infrastructure.All/bin/Release/*.nupkg -Source "GPR"
+        run: |
+          for package in ./Ajupov.Infrastructure.All/bin/Release/*.nupkg
+            do
+              curl -vX PUT -u "ajupov:${{ secrets.NUGET_PASSWORD }}" -F package=@$package https://nuget.pkg.github.com/ajupov/
+            done
+        shell: bash
+#         run: nuget push ./Ajupov.Infrastructure.All/bin/Release/*.nupkg -Source "GPR"
