@@ -1,8 +1,8 @@
 name: Create Nuget package
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -11,27 +11,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
-      
+
       - name: Setup net core version
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.100' 
-      
+          dotnet-version: '3.1.100'
+
       - name: Generate package
         run: dotnet pack --configuration Release
         shell: bash
-        
-#       - name: Install nuget
-#         uses: warrenbuckley/Setup-Nuget@v1
-  
-#       - name: Add registry
-#         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
-  
+
       - name: Push package
         run: |
           for package in ./bin/Release/*.nupkg
             do
-              curl -vX PUT -u "ajupov:${{ secrets.NUGET_PASSWORD }}" -F package=@$package https://nuget.pkg.github.com/ajupov/
+              curl -vX PUT -u "${{ secrets.NUGET_USERNAME }}:${{ secrets.NUGET_PASSWORD }}" -F package=@$package ${{ secrets.NUGET_SOURCE }}
             done
         shell: bash
-#         run: nuget push ./Ajupov.Infrastructure.All/bin/Release/*.nupkg -Source "GPR"
