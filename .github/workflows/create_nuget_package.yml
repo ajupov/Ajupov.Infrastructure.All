@@ -24,8 +24,8 @@ jobs:
 #       - name: Install nuget
 #         uses: warrenbuckley/Setup-Nuget@v1
   
-      - name: Add registry
-        run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
+#       - name: Add registry
+#         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/ajupov/index.json -Username ajupov -Password ${{ secrets.NUGET_PASSWORD }}
   
       - name: Push package
         run: |
