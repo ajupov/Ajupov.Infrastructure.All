@@ -25,12 +25,9 @@ jobs:
 
       - name: Add registry
         run: nuget sources add -name "GPR" -Source ${{ secrets.NUGET_SOURCE }} -Username ${{ secrets.NUGET_USERNAME }} -Password ${{ secrets.NUGET_PASSWORD }}
-      
-      - name: Set registry token
-        run: nuget setapikey ${{ secrets.NUGET_PASSWORD }} -Source "GPR"
         
       - name: Push package
-        run: nuget push out/*.nupkg -Source "GPR" -SkipDuplicate
+        run: nuget push ${{ secrets.NUGET_PASSWORD }} out/*.nupkg -Source "GPR" -SkipDuplicate
 
 #       - name: Push package
 #         run: |
