@@ -30,7 +30,7 @@ jobs:
         run: nuget setapikey ${{ secrets.NUGET_PASSWORD }} -Source "GPR"
         
       - name: Push package
-        run: nuget push out/*.nupkg -Source "GPR" -SkipDuplicate -Verbosity
+        run: nuget push out/*.nupkg -Source "GPR" -SkipDuplicate
 
 #       - name: Push package
 #         run: |
