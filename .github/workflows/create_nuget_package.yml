@@ -28,7 +28,7 @@ jobs:
         run: nuget sources add -name "GPR" -Source ${{ secrets.NUGET_SOURCE }} -Username ${{ secrets.NUGET_USERNAME }} -Password ${{ secrets.NUGET_PASSWORD }}
       
       - name: Push package
-        run: nuget push out\*.nupkg -Source "GPR"
+        run: nuget push out/*.nupkg -Source "GPR"
 
 #       - name: Push package
 #         run: |
