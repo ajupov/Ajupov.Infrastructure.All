@@ -12,19 +12,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@master
 
-      - name: Setup net core version
+      - name: Setup Net Core version
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.100'
 
       - name: Generate package
-        run: dotnet pack --configuration Release
-        shell: bash
+        run: dotnet pack --configuration Release --output out
+#         shell: bash
 
+      - name: Install nuget
+        run: sudo apt install nuget
+
+      - name: Add registry
+        run: nuget sources add -name "GPR" -Source ${{ secrets.NUGET_SOURCE }} -Username ${{ secrets.NUGET_USERNAME }} -Password ${{ secrets.NUGET_PASSWORD }}
+      
       - name: Push package
-        run: |
-          for package in ./bin/Release/*.nupkg
-            do
-              curl -vX PUT -u "${{ secrets.NUGET_USERNAME }}:${{ secrets.NUGET_PASSWORD }}" -F package=@$package ${{ secrets.NUGET_SOURCE }}
-            done
-        shell: bash
+        run: nuget push out\*.nupkg -k ${{ secrets.NUGET_API_KEY }} -Source "GPR"
+
+#       - name: Push package
+#         run: |
+#           for package in ./bin/Release/*.nupkg
+#             do
+#               curl -vX PUT -u "${{ secrets.NUGET_USERNAME }}:${{ secrets.NUGET_PASSWORD }}" -F package=@$package ${{ secrets.NUGET_SOURCE }}
+#             done
+#         shell: bash
