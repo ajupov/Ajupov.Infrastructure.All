@@ -27,8 +27,6 @@ namespace Ajupov.Infrastructure.All.Jwt
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
-
             return services.AddAuthentication(options =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -36,7 +34,7 @@ namespace Ajupov.Infrastructure.All.Jwt
                 options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultForbidScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = jwtSettings.GetValue<string>("Issuer");
+                options.DefaultChallengeScheme = "LiteCRM Identity";
             });
         }
 
