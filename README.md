@@ -17,6 +17,7 @@ public static class Program
             .UseWebRoot(Directory.GetCurrentDirectory())
             .ConfigureServices((context, services) => services
                 .ConfigureMvc(typeof(SomeFilter))
+                .ConfigureJwt(configuration)
                 .ConfigureTracing(configuration)
                 .ConfigureApiDocumentation()
                 .ConfigureMetrics(context.Configuration)
