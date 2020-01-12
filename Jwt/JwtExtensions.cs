@@ -1,5 +1,6 @@
 ﻿using Ajupov.Infrastructure.All.Jwt.Helpers;
 using Ajupov.Infrastructure.All.Jwt.JwtGenerator;
+using Ajupov.Infrastructure.All.Jwt.JwtReader;
 using Ajupov.Infrastructure.All.Jwt.Settings;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -18,6 +19,16 @@ namespace Ajupov.Infrastructure.All.Jwt
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
                 .AddSingleton<IJwtGenerator, JwtGenerator.JwtGenerator>()
+                .BuildServiceProvider();
+
+            return services;
+        }
+
+        public static IServiceCollection ConfigureJwtReader(
+            this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddSingleton<IJwtReader, JwtReader.JwtReader>()
                 .BuildServiceProvider();
 
             return services;
