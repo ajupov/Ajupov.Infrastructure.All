@@ -11,11 +11,9 @@ namespace Ajupov.Infrastructure.All.MailSending
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.Configure<MailSendingSettings>(configuration.GetSection("MailSendingSettings"))
-                .AddSingleton<IMailSender, MailSender.MailSender>()
-                .BuildServiceProvider();
-
-            return services;
+            return services
+                .Configure<MailSendingSettings>(configuration.GetSection("MailSendingSettings"))
+                .AddSingleton<IMailSender, MailSender.MailSender>();
         }
     }
 }

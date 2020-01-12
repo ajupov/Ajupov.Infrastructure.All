@@ -1,11 +1,8 @@
 ﻿using Ajupov.Infrastructure.All.Jwt.Helpers;
 using Ajupov.Infrastructure.All.Jwt.JwtGenerator;
 using Ajupov.Infrastructure.All.Jwt.JwtReader;
-using Ajupov.Infrastructure.All.Jwt.Settings;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,30 +10,19 @@ namespace Ajupov.Infrastructure.All.Jwt
 {
     public static class JwtExtensions
     {
-        public static IServiceCollection ConfigureJwtGenerator(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection ConfigureJwtGenerator(this IServiceCollection services)
         {
-            services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
-                .AddSingleton<IJwtGenerator, JwtGenerator.JwtGenerator>()
-                .BuildServiceProvider();
-
-            return services;
+            return services
+                .AddSingleton<IJwtGenerator, JwtGenerator.JwtGenerator>();
         }
 
-        public static IServiceCollection ConfigureJwtReader(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection ConfigureJwtReader(this IServiceCollection services)
         {
-            services.AddSingleton<IJwtReader, JwtReader.JwtReader>()
-                .BuildServiceProvider();
-
-            return services;
+            return services
+                .AddSingleton<IJwtReader, JwtReader.JwtReader>();
         }
 
-        public static AuthenticationBuilder ConfigureJwtAuthentication(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static AuthenticationBuilder AddJwtAuthentication(this IServiceCollection services)
         {
             return services.AddAuthentication(options =>
             {
@@ -45,16 +31,16 @@ namespace Ajupov.Infrastructure.All.Jwt
                 options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultForbidScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = "LiteCRM Identity";
+                options.DefaultChallengeScheme = JwtDefaults.Scheme;
             });
         }
 
-        public static AuthenticationBuilder ConfigureJwtValidator(
+        public static AuthenticationBuilder AddJwtValidator(
             this AuthenticationBuilder builder,
-            IConfiguration configuration)
+            string key,
+            bool validateAudience,
+            string audience)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
-
             return builder
                 .AddJwtBearer(options =>
                 {
@@ -63,16 +49,14 @@ namespace Ajupov.Infrastructure.All.Jwt
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateAudience = validateAudience,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = jwtSettings.GetValue<string>("Issuer"),
-                        ValidAudience = jwtSettings.GetValue<string>("Audience"),
-                        IssuerSigningKey =
-                            SymmetricSecurityKeyHelper.GetSymmetricSecurityKey(jwtSettings.GetValue<string>("Key"))
+                        ValidIssuer = JwtDefaults.Scheme,
+                        ValidAudience = audience,
+                        IssuerSigningKey = SymmetricSecurityKeyHelper.GetSymmetricSecurityKey(key)
                     };
-                })
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+                });
         }
     }
 }

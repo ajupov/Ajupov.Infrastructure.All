@@ -11,12 +11,10 @@ namespace Ajupov.Infrastructure.All.SmsSending
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.Configure<SmsSendingSettings>(configuration.GetSection("SmsSendingSettings"))
+            return services
+                .Configure<SmsSendingSettings>(configuration.GetSection("SmsSendingSettings"))
                 .AddSingleton<ISmsSender, SmsSender.SmsSender>()
-                .AddHttpClient()
-                .BuildServiceProvider();
-
-            return services;
+                .AddHttpClient();
         }
     }
 }
