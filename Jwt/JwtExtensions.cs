@@ -38,8 +38,7 @@ namespace Ajupov.Infrastructure.All.Jwt
         public static AuthenticationBuilder AddJwtValidator(
             this AuthenticationBuilder builder,
             string key,
-            bool validateAudience,
-            string audience)
+            string audience = null)
         {
             return builder
                 .AddJwtBearer(options =>
@@ -49,7 +48,7 @@ namespace Ajupov.Infrastructure.All.Jwt
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidateAudience = validateAudience,
+                        ValidateAudience = !string.IsNullOrWhiteSpace(audience),
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = JwtDefaults.Scheme,
