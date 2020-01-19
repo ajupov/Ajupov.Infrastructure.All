@@ -12,7 +12,7 @@ namespace Ajupov.Infrastructure.All.MailSending
             IConfiguration configuration)
         {
             return services
-                .Configure<MailSendingSettings>(configuration.GetSection("MailSendingSettings"))
+                .Configure<MailSendingSettings>(configuration.GetSection(nameof(MailSendingSettings)))
                 .AddSingleton<IMailSender, MailSender.MailSender>();
         }
     }

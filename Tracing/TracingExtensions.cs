@@ -22,7 +22,7 @@ namespace Ajupov.Infrastructure.All.Tracing
 
             services
                 .AddOpenTracing()
-                .Configure<TracingSettings>(configuration.GetSection("TracingSettings"))
+                .Configure<TracingSettings>(configuration.GetSection(nameof(TracingSettings)))
                 .AddSingleton<ITracer>(x =>
                 {
                     var loggerFactory = x.GetRequiredService<ILoggerFactory>();

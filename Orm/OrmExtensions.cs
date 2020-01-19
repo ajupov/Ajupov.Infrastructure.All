@@ -10,9 +10,9 @@ namespace Ajupov.Infrastructure.All.Orm
             this IServiceCollection services,
             IConfiguration configuration) where TStorage : Storage
         {
-            services.Configure<OrmSettings>(configuration.GetSection("OrmSettings"));
+            services.Configure<OrmSettings>(configuration.GetSection(nameof(OrmSettings)));
 
-            var isTestMode = configuration.GetSection("OrmSettings").GetValue<bool>("IsTestMode");
+            var isTestMode = configuration.GetSection(nameof(OrmSettings)).GetValue<bool>("IsTestMode");
             if (isTestMode)
             {
                 services.AddEntityFrameworkInMemoryDatabase();

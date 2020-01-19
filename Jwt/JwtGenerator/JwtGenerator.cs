@@ -15,7 +15,7 @@ namespace Ajupov.Infrastructure.All.Jwt.JwtGenerator
             var expires = now.Add(expiresTimeSpan);
             var securityKey = SymmetricSecurityKeyHelper.GetSymmetricSecurityKey(key);
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var jwt = new JwtSecurityToken(JwtDefaults.Scheme, audience, claims, now, expires, credentials);
+            var jwt = new JwtSecurityToken(JwtDefaults.AuthenticationScheme, audience, claims, now, expires, credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }

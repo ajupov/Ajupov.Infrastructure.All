@@ -15,7 +15,7 @@ namespace Ajupov.Infrastructure.All.Metrics
             IConfiguration configuration)
         {
             return services
-                .Configure<MetricsSettings>(configuration.GetSection("MetricsSettings"))
+                .Configure<MetricsSettings>(configuration.GetSection(nameof(MetricsSettings)))
                 .AddSingleton<IHostedService, MetricsCollector>();
         }
 

@@ -13,8 +13,10 @@ namespace Ajupov.Infrastructure.All.MessageBroking
             IConfiguration configuration) where TConsumer : class, IHostedService
         {
             return services
-                .Configure<MessageBrokingConsumerSettings>(configuration.GetSection("MessageBrokingConsumerSettings"))
-                .Configure<MessageBrokingProducerSettings>(configuration.GetSection("MessageBrokingProducerSettings"))
+                .Configure<MessageBrokingConsumerSettings>(
+                    configuration.GetSection(nameof(MessageBrokingConsumerSettings)))
+                .Configure<MessageBrokingProducerSettings>(
+                    configuration.GetSection(nameof(MessageBrokingProducerSettings)))
                 .AddSingleton<IConsumer, Consumer>()
                 .AddSingleton<IHostedService, TConsumer>();
         }

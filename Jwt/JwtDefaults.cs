@@ -2,7 +2,7 @@
 {
     public static class JwtDefaults
     {
-        public const string Scheme = "LiteCRM Identity";
+        public const string AuthenticationScheme = "LiteCRM Identity";
 
         public const string IdentifierClaimType = "id";
 
@@ -16,6 +16,6 @@
 
         public const string GenderClaimType = "gender";
 
-        public const string BirthDate = "birth_date";
+        public const string BirthDateClaimType = "birth_date";
     }
 }
