@@ -14,7 +14,6 @@ namespace Ajupov.Infrastructure.All.Mvc
                 .AddMvc(x =>
                 {
                     x.EnableEndpointRouting = false;
-                    x.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
