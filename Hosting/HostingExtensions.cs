@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Ajupov.Infrastructure.All.Hosting
@@ -11,6 +12,12 @@ namespace Ajupov.Infrastructure.All.Hosting
                 .UseConfiguration(configuration)
                 .UseUrls(configuration.GetValue<string>("ApplicationHost"))
                 .UseKestrel();
+        }
+
+        public static IWebHostBuilder ConfigureWebRoot(this IWebHostBuilder builder)
+        {
+            return builder
+                .UseWebRoot(Directory.GetCurrentDirectory());
         }
     }
 }
