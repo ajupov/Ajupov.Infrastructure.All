@@ -13,6 +13,7 @@ public static class Program
 
         return configuration
             .ConfigureHosting()
+            .ConfigureWebRoot()
             .ConfigureLogging(configuration)
             .UseWebRoot(Directory.GetCurrentDirectory())
             .ConfigureServices((context, services) =>
