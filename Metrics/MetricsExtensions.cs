@@ -10,7 +10,7 @@ namespace Ajupov.Infrastructure.All.Metrics
 {
     public static class MetricsExtensions
     {
-        public static IServiceCollection ConfigureMetrics(
+        public static IServiceCollection AddMetrics(
             this IServiceCollection services,
             IConfiguration configuration)
         {

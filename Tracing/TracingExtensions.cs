@@ -14,9 +14,7 @@ namespace Ajupov.Infrastructure.All.Tracing
 {
     public static class TracingExtensions
     {
-        public static IServiceCollection ConfigureTracing(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection AddTracing(this IServiceCollection services, IConfiguration configuration)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
 

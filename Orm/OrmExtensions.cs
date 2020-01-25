@@ -6,7 +6,7 @@ namespace Ajupov.Infrastructure.All.Orm
 {
     public static class OrmExtensions
     {
-        public static IServiceCollection ConfigureOrm<TStorage>(
+        public static IServiceCollection AddOrm<TStorage>(
             this IServiceCollection services,
             IConfiguration configuration) where TStorage : Storage
         {

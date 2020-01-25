@@ -12,13 +12,13 @@ namespace Ajupov.Infrastructure.All.Jwt
 {
     public static class JwtExtensions
     {
-        public static IServiceCollection ConfigureJwtGenerator(this IServiceCollection services)
+        public static IServiceCollection AddJwtGenerator(this IServiceCollection services)
         {
             return services
                 .AddSingleton<IJwtGenerator, JwtGenerator.JwtGenerator>();
         }
 
-        public static IServiceCollection ConfigureJwtReader(this IServiceCollection services)
+        public static IServiceCollection AddJwtReader(this IServiceCollection services)
         {
             return services
                 .AddSingleton<IJwtReader, JwtReader.JwtReader>();

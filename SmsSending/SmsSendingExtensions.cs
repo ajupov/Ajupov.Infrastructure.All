@@ -7,14 +7,12 @@ namespace Ajupov.Infrastructure.All.SmsSending
 {
     public static class SmsSendingExtensions
     {
-        public static IServiceCollection ConfigureSmsSending(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection AddSmsSending(this IServiceCollection services, IConfiguration configuration)
         {
             return services
+                .AddHttpClient()
                 .Configure<SmsSendingSettings>(configuration.GetSection(nameof(SmsSendingSettings)))
-                .AddSingleton<ISmsSender, SmsSender.SmsSender>()
-                .AddHttpClient();
+                .AddSingleton<ISmsSender, SmsSender.SmsSender>();
         }
     }
 }

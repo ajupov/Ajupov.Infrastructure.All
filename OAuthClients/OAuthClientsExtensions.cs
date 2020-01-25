@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,19 +6,11 @@ namespace Ajupov.Infrastructure.All.OAuthClients
 {
     public static class OAuthClientsExtensions
     {
-        public static IServiceCollection ConfigureOAuthClients(
-            this IServiceCollection services,
+        public static AuthenticationBuilder AddOAuthClients(
+            this AuthenticationBuilder builder,
             IConfiguration configuration)
         {
-            services.AddAuthentication()
-                .AddOAuth("Main", x =>
-                {
-                    var section = configuration.GetSection("MainOauthClientSettings");
-
-                    x.ClientId = section.GetValue<string>("ClientId");
-                    x.ClientSecret = section.GetValue<string>("ClientSecret");
-                    x.CallbackPath = "/MainCallback";
-                })
+            return builder
                 .AddVkontakte(x =>
                 {
                     var section = configuration.GetSection("VkontakteOauthClientSettings");
@@ -61,13 +53,6 @@ namespace Ajupov.Infrastructure.All.OAuthClients
                     x.ClientSecret = section.GetValue<string>("ClientSecret");
                     x.CallbackPath = "/MailRuCallback";
                 });
-
-            return services;
-        }
-
-        public static IApplicationBuilder UseOAuthClients(this IApplicationBuilder app)
-        {
-            return app.UseAuthentication();
         }
     }
 }

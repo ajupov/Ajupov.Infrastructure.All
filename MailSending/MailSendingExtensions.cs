@@ -7,7 +7,7 @@ namespace Ajupov.Infrastructure.All.MailSending
 {
     public static class MailSendingExtensions
     {
-        public static IServiceCollection ConfigureMailSending(
+        public static IServiceCollection AddMailSending(
             this IServiceCollection services,
             IConfiguration configuration)
         {

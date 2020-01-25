@@ -9,7 +9,7 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
     {
         private const string DefaultApiVersion = "v1";
 
-        public static IServiceCollection ConfigureApiDocumentation(
+        public static IServiceCollection AddApiDocumentation(
             this IServiceCollection services,
             string apiVersion = DefaultApiVersion)
         {

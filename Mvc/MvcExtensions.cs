@@ -8,7 +8,7 @@ namespace Ajupov.Infrastructure.All.Mvc
 {
     public static class MvcExtensions
     {
-        public static IServiceCollection ConfigureMvc(this IServiceCollection services, params Type[] filters)
+        public static IServiceCollection AddMvc(this IServiceCollection services, params Type[] filters)
         {
             services
                 .AddMvc(x =>
@@ -16,9 +16,8 @@ namespace Ajupov.Infrastructure.All.Mvc
                     x.EnableEndpointRouting = false;
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
+                .AddNewtonsoftJson()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
-
-            services.AddDataProtection();
 
             return services;
         }

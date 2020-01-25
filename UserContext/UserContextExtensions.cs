@@ -5,7 +5,7 @@ namespace Ajupov.Infrastructure.All.UserContext
 {
     public static class UserContextExtensions
     {
-        public static IServiceCollection ConfigureUserContext<TUserContext, TUserContextImplementation>(
+        public static IServiceCollection AddUserContext<TUserContext, TUserContextImplementation>(
             this IServiceCollection services)
             where TUserContext : class
             where TUserContextImplementation : class, TUserContext

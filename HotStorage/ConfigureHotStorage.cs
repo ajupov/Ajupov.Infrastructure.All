@@ -7,7 +7,7 @@ namespace Ajupov.Infrastructure.All.HotStorage
 {
     public static class MailSendingExtensions
     {
-        public static IServiceCollection ConfigureHotStorage(
+        public static IServiceCollection AddHotStorage(
             this IServiceCollection services,
             IConfiguration configuration)
         {

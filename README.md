@@ -15,18 +15,23 @@ public static class Program
             .ConfigureHost()
             .ConfigureLogging(configuration)
             .UseWebRoot(Directory.GetCurrentDirectory())
-            .ConfigureServices((context, services) => services
-                .ConfigureMvc(typeof(SomeFilter))
-                .ConfigureJwt(configuration)
-                .ConfigureTracing(configuration)
-                .ConfigureApiDocumentation()
-                .ConfigureMetrics(context.Configuration)
-                .ConfigureMigrator(context.Configuration)
-                .ConfigureMailSending(context.Configuration)
-                .ConfigureSmsSending(context.Configuration)
-                .ConfigureOrm<SomeStorage>(context.Configuration)
-                .ConfigureHotStorage(context.Configuration)
-                .AddTransient<ISomeService, Service>())
+            .ConfigureServices((context, services) =>
+            {
+                services
+                    .AddMvc(typeof(SomeFilter))
+                    .AddJwtGenerator()
+                    .AddJwtReader()
+                    .AddTracing(configuration)
+                    .AddApiDocumentation()
+                    .AddMetrics(context.Configuration)
+                    .AddMigrator(context.Configuration)
+                    .AddMailSending(context.Configuration)
+                    .AddSmsSending(context.Configuration)
+                    .AddOrm<SomeStorage>(context.Configuration)
+                    .AddHotStorage(context.Configuration);
+                    
+                services
+                    .AddTransient<ISomeService, SomeService>());
             .Configure((context, builder) =>
             {
                 if (context.HostingEnvironment.IsDevelopment())
@@ -34,7 +39,8 @@ public static class Program
                     builder.UseDeveloperExceptionPage();
                 }
 
-                builder.UseStaticFiles()
+                builder
+                    .UseStaticFiles()
                     .UseApiDocumentationsMiddleware()
                     .UseMigrationsMiddleware()
                     .UseMetricsMiddleware()

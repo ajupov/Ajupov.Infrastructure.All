@@ -5,7 +5,7 @@ namespace Ajupov.Infrastructure.All.Hosting
 {
     public static class HostingExtensions
     {
-        public static IWebHostBuilder ConfigureHost(this IConfiguration configuration)
+        public static IWebHostBuilder ConfigureHosting(this IConfiguration configuration)
         {
             return new WebHostBuilder()
                 .UseConfiguration(configuration)

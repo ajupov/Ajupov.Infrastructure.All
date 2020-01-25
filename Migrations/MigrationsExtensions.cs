@@ -8,9 +8,7 @@ namespace Ajupov.Infrastructure.All.Migrations
 {
     public static class MigrationsExtensions
     {
-        public static IServiceCollection ConfigureMigrator(
-            this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection AddMigrator(this IServiceCollection services, IConfiguration configuration)
         {
             var isSkipMigrations = bool.Parse(configuration["IsSkipMigrations"]);
             if (isSkipMigrations)
@@ -36,7 +34,7 @@ namespace Ajupov.Infrastructure.All.Migrations
             using var scope = applicationBuilder.ApplicationServices
                 .GetRequiredService<IServiceScopeFactory>()
                 .CreateScope();
-            
+
             scope.ServiceProvider
                 .GetService<IMigrationRunner>()?
                 .MigrateUp();

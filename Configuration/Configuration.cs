@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Ajupov.Infrastructure.All.Configuration
 {
-    public static class ConfigurationExtensions
+    public static class Configuration
     {
         public static IConfiguration GetConfiguration()
         {
