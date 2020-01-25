@@ -9,10 +9,10 @@ public static class Program
 {
     public static Task Main()
     {
-        var configuration = ConfigurationExtensions.GetConfiguration();
+        var configuration = Configuration.GetConfiguration();
 
         return configuration
-            .ConfigureHost()
+            .ConfigureHosting()
             .ConfigureLogging(configuration)
             .UseWebRoot(Directory.GetCurrentDirectory())
             .ConfigureServices((context, services) =>
