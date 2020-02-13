@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Unchase.Swashbuckle.AspNetCore.Extensions.Filters;
 
 namespace Ajupov.Infrastructure.All.ApiDocumentation
 {
@@ -19,7 +20,11 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
                 Version = apiVersion
             };
 
-            return services.AddSwaggerGen(x => x.SwaggerDoc(apiVersion, info));
+            return services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc(apiVersion, info);
+                x.SchemaFilter<XEnumNamesSchemaFilter>();
+            });
         }
 
         public static IApplicationBuilder UseApiDocumentationsMiddleware(
