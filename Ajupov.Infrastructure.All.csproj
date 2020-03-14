@@ -3,6 +3,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <PackageVersion>1.6.0</PackageVersion>
         <Authors>U. Ajupov</Authors>
+        <RepositoryUrl>https://github.com/ajupov/Ajupov.Infrastructure.All.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AspNet.Security.OAuth.Instagram" Version="3.0.0" />
