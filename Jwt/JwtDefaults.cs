@@ -2,7 +2,7 @@
 {
     public static class JwtDefaults
     {
-        public const string AuthenticationScheme = "LiteCRM Identity";
+        public const string AuthenticationScheme = "LiteCRM OAuth";
 
         public const string IdentifierClaimType = "id";
 
