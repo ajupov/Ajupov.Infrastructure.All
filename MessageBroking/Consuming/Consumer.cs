@@ -39,7 +39,7 @@ namespace Ajupov.Infrastructure.All.MessageBroking.Consuming
         {
             while (_isWorking)
             {
-                var result = JsonConvert.DeserializeObject<Message>(_consumer.Consume().Value);
+                var result = JsonConvert.DeserializeObject<Message>(_consumer.Consume().Message.Value);
                 action(result, CancellationToken.None);
                 _consumer.Commit();
             }
