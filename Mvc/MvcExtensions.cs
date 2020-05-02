@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace Ajupov.Infrastructure.All.Mvc
 {
@@ -16,7 +17,8 @@ namespace Ajupov.Infrastructure.All.Mvc
                     x.EnableEndpointRouting = false;
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
-                .AddNewtonsoftJson()
+                .AddNewtonsoftJson(x => 
+                    x.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc)
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             return services;
