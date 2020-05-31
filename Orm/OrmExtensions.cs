@@ -8,7 +8,8 @@ namespace Ajupov.Infrastructure.All.Orm
     {
         public static IServiceCollection AddOrm<TStorage>(
             this IServiceCollection services,
-            IConfiguration configuration) where TStorage : Storage
+            IConfiguration configuration)
+            where TStorage : Storage
         {
             services.Configure<OrmSettings>(configuration.GetSection(nameof(OrmSettings)));
 

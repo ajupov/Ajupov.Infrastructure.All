@@ -17,7 +17,7 @@ namespace Ajupov.Infrastructure.All.Mvc
                     x.EnableEndpointRouting = false;
                     filters.ToList().ForEach(f => x.Filters.Add(f));
                 })
-                .AddNewtonsoftJson(x => 
+                .AddNewtonsoftJson(x =>
                     x.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc)
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 

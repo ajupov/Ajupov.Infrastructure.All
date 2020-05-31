@@ -7,7 +7,7 @@ namespace Ajupov.Infrastructure.All.Tracing.Settings
         public int AgentPort { get; set; }
 
         public double SamplingRate { get; set; }
-        
+
         public double LowerBound { get; set; }
     }
 }

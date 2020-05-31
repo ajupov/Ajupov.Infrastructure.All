@@ -5,7 +5,7 @@ using ServiceStack.Redis;
 
 namespace Ajupov.Infrastructure.All.HotStorage
 {
-    public static class MailSendingExtensions
+    public static class HotStorageExtensions
     {
         public static IServiceCollection AddHotStorage(
             this IServiceCollection services,

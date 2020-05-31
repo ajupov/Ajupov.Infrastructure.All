@@ -10,7 +10,8 @@ namespace Ajupov.Infrastructure.All.MessageBroking
     {
         public static IServiceCollection AddConsumer<TConsumer>(
             this IServiceCollection services,
-            IConfiguration configuration) where TConsumer : class, IHostedService
+            IConfiguration configuration)
+            where TConsumer : class, IHostedService
         {
             return services
                 .Configure<MessageBrokingConsumerSettings>(

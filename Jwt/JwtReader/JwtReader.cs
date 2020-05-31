@@ -2,11 +2,6 @@
 
 namespace Ajupov.Infrastructure.All.Jwt.JwtReader
 {
-    public interface IJwtReader
-    {
-        JwtSecurityToken ReadAccessToken(string stringValue);
-    }
-
     public class JwtReader : IJwtReader
     {
         public JwtSecurityToken ReadAccessToken(string stringValue)

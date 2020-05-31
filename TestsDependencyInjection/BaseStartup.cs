@@ -8,7 +8,8 @@ namespace Ajupov.Infrastructure.All.TestsDependencyInjection
 {
     public class BaseStartup : DependencyInjectionTestFramework
     {
-        public BaseStartup() : base(new NullMessageSink())
+        public BaseStartup()
+            : base(new NullMessageSink())
         {
         }
 

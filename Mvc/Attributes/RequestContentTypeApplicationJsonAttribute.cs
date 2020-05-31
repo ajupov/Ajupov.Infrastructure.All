@@ -4,7 +4,8 @@ namespace Ajupov.Infrastructure.All.Mvc.Attributes
 {
     public class RequestContentTypeApplicationJsonAttribute : ConsumesAttribute
     {
-        public RequestContentTypeApplicationJsonAttribute() : base("application/json")
+        public RequestContentTypeApplicationJsonAttribute()
+            : base("application/json")
         {
         }
     }
