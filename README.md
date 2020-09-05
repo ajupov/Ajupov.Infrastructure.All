@@ -14,12 +14,17 @@ public static class Program
 
         return configuration
             .ConfigureHosting()
-            .ConfigureWebRoot()
             .ConfigureLogging(configuration)
-            .UseWebRoot(Directory.GetCurrentDirectory())
             .ConfigureServices((context, services) =>
             {
                 services
+                    .AddAuthorization()
+                    .AddJwtAuthentication()
+                    .AddJwtValidator(configuration)
+                    .AddCookieDefaults();
+
+                services
+                    .AddCookiePolicy()
                     .AddSingleOriginCorsPolicy(configuration)
                     .AddMvc(typeof(SomeFilter))
                     .AddJwtAuthentication()
