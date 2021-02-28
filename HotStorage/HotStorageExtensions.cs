@@ -11,10 +11,22 @@ namespace Ajupov.Infrastructure.All.HotStorage
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            return services
-                .AddSingleton<IHotStorage, HotStorage.HotStorage>()
-                .AddSingleton<IRedisClientsManager>(x =>
-                    new RedisManagerPool(configuration.GetConnectionString("HotStorageConnectionString")));
+            var isInMemoryHotStorage = configuration.GetValue<bool>("IsInMemoryHotStorage");
+
+            if (isInMemoryHotStorage)
+            {
+                services
+                    .AddSingleton<IHotStorage, InMemoryHotStorage>();
+            }
+            else
+            {
+                services
+                    .AddSingleton<IHotStorage, RedisHotStorage>()
+                    .AddSingleton<IRedisClientsManager>(_ =>
+                        new RedisManagerPool(configuration.GetConnectionString("HotStorageConnectionString")));
+            }
+
+            return services;
         }
     }
 }

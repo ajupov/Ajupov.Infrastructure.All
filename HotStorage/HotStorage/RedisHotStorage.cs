@@ -3,19 +3,13 @@ using ServiceStack.Redis;
 
 namespace Ajupov.Infrastructure.All.HotStorage.HotStorage
 {
-    public class HotStorage : IHotStorage
+    public class RedisHotStorage : IHotStorage
     {
         private readonly IRedisClientsManager _redisClientsManager;
 
-        public HotStorage(IRedisClientsManager redisClientsManager)
+        public RedisHotStorage(IRedisClientsManager redisClientsManager)
         {
             _redisClientsManager = redisClientsManager;
-        }
-
-        public void SetTempString(string value, TimeSpan timeSpan)
-        {
-            using var client = _redisClientsManager.GetClient();
-            client.SetValue(value, value, timeSpan);
         }
 
         public void SetValue<T>(string key, T value, TimeSpan timeSpan)
