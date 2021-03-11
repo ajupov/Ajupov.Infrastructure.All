@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Ajupov.Infrastructure.All.Mvc.Attributes
+namespace Ajupov.Infrastructure.All.Api.Attributes
 {
     public class ResponseContentTypeApplicationJsonAttribute : ProducesAttribute
     {

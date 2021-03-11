@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ajupov.Infrastructure.All.Mvc
+namespace Ajupov.Infrastructure.All.Api
 {
     public class DefaultApiController : ControllerBase
     {

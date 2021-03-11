@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Ajupov.Infrastructure.All.Mvc.Filters
+namespace Ajupov.Infrastructure.All.Api.Filters
 {
     public class ValidationFilter : IAsyncActionFilter
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Ajupov.Infrastructure.All.Mvc.Attributes
+namespace Ajupov.Infrastructure.All.Api.Attributes
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {
