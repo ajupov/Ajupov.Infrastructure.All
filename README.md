@@ -4,62 +4,61 @@ All packages for backend applications
 ## Usage
 1. Add nuget source: `nuget sources add -name GPR -Source https://nuget.pkg.github.com/ajupov`
 2. Install package: `nuget install Ajupov.Infrastructure.All`
-
+3. Configure `Startup.cs`
 ```
-public static class Program
+public class Startup
 {
-    public static Task Main()
+    public Startup(IConfiguration configuration)
     {
-        var configuration = Configuration.GetConfiguration();
+        Configuration = configuration;
+    }
 
-        return configuration
-            .ConfigureHosting()
-            .ConfigureLogging(configuration)
-            .ConfigureServices((context, services) =>
-            {
-                services
-                    .AddAuthorization()
-                    .AddJwtAuthentication()
-                    .AddJwtValidator(configuration)
-                    .AddCookieDefaults();
+    public IConfiguration Configuration { get; }
 
-                services
-                    .AddCookiePolicy()
-                    .AddSingleOriginCorsPolicy(configuration)
-                    .AddMvc(typeof(SomeFilter))
-                    .AddJwtAuthentication()
-                    .AddJwtValidator(configuration)
-                    .AddJwtGenerator()
-                    .AddJwtReader()
-                    .AddTracing(configuration)
-                    .AddApiDocumentation()
-                    .AddMetrics(context.Configuration)
-                    .AddMigrator(context.Configuration)
-                    .AddMailSending(context.Configuration)
-                    .AddSmsSending(context.Configuration)
-                    .AddOrm<SomeStorage>(context.Configuration)
-                    .AddHotStorage(context.Configuration);
-                    
-                services
-                    .AddTransient<ISomeService, SomeService>());
-            .Configure((context, builder) =>
-            {
-                if (context.HostingEnvironment.IsDevelopment())
-                {
-                    builder.UseDeveloperExceptionPage();
-                }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services
+            .AddAuthorization()
+            .AddJwtAuthentication()
+            .AddJwtValidator(configuration)
+            .AddCookieDefaults();
 
-                builder
-                    .UseStaticFiles()
-                    .UseApiDocumentationsMiddleware()
-                    .UseMigrationsMiddleware()
-                    .UseMetricsMiddleware()
-                    .UseSingleOriginCors()
-                    .UseAuthorization()
-                    .UseMvcMiddleware();
-            })
-            .Build()
-            .RunAsync();
+        services
+            .AddCookiePolicy()
+            .AddSingleOriginCorsPolicy(configuration)
+            .AddControllers(typeof(SomeFilter))
+            .AddJwtAuthentication()
+            .AddJwtValidator(configuration)
+            .AddJwtGenerator()
+            .AddJwtReader()
+            .AddTracing(configuration)
+            .AddApiDocumentation()
+            .AddMetrics(context.Configuration)
+            .AddMigrator(context.Configuration)
+            .AddMailSending(context.Configuration)
+            .AddSmsSending(context.Configuration)
+            .AddOrm<SomeStorage>(context.Configuration)
+            .AddHotStorage(context.Configuration);
+    }
+    
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage()
+                .UseForwardedHeaders()
+                .UseHttpsRedirection()
+                .UseHsts();
+        }
+
+        builder
+            .UseStaticFiles()
+            .UseApiDocumentationsMiddleware()
+            .UseMigrationsMiddleware()
+            .UseMetricsMiddleware()
+            .UseSingleOriginCors()
+            .UseAuthorization()
+            .UseMvcMiddleware();
     }
 }
 
