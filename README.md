@@ -51,14 +51,15 @@ public class Startup
                 .UseHsts();
         }
 
-        builder
-            .UseStaticFiles()
+        app.UseStaticFiles()
             .UseApiDocumentationsMiddleware()
             .UseMigrationsMiddleware()
             .UseMetricsMiddleware()
             .UseSingleOriginCors()
+            .UseAuthentication()
+            .UseRouting()
             .UseAuthorization()
-            .UseMvcMiddleware();
+            .UseControllers();
     }
 }
 
