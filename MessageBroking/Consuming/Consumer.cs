@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Ajupov.Infrastructure.All.MessageBroking.Models;
 using Ajupov.Infrastructure.All.MessageBroking.Settings;
 using Confluent.Kafka;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 namespace Ajupov.Infrastructure.All.MessageBroking.Consuming
 {
@@ -39,7 +39,7 @@ namespace Ajupov.Infrastructure.All.MessageBroking.Consuming
         {
             while (_isWorking)
             {
-                var result = JsonConvert.DeserializeObject<Message>(_consumer.Consume().Message.Value);
+                var result = JsonSerializer.Deserialize<Message>(_consumer.Consume().Message.Value);
                 action(result, CancellationToken.None);
                 _consumer.Commit();
             }

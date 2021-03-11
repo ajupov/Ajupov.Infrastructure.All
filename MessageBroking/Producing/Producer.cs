@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Ajupov.Infrastructure.All.MessageBroking.Models;
 using Ajupov.Infrastructure.All.MessageBroking.Settings;
 using Confluent.Kafka;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 namespace Ajupov.Infrastructure.All.MessageBroking.Producing
 {
@@ -25,7 +25,7 @@ namespace Ajupov.Infrastructure.All.MessageBroking.Producing
             using var producer = new ProducerBuilder<Null, string>(_config).Build();
 
             return producer.ProduceAsync(topic,
-                new Message<Null, string> {Value = JsonConvert.SerializeObject(message)});
+                new Message<Null, string> {Value = JsonSerializer.Serialize(message)});
         }
     }
 }
