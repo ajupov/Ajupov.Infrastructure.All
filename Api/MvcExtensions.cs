@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ajupov.Infrastructure.All.Mvc
+namespace Ajupov.Infrastructure.All.Api
 {
     public static class MvcExtensions
     {
@@ -19,7 +19,7 @@ namespace Ajupov.Infrastructure.All.Mvc
             return services;
         }
 
-        public static IApplicationBuilder UseMvcMiddleware(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseControllers(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder
                 .UseEndpoints(endpoints => endpoints.MapControllers());
