@@ -23,7 +23,6 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
             });
         }
 
-
         public static IApplicationBuilder UseApiDocumentationsMiddleware(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder
