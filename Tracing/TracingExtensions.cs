@@ -19,6 +19,13 @@ namespace Ajupov.Infrastructure.All.Tracing
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
 
+            var section = configuration.GetSection(nameof(TracingSettings));
+
+            if (string.IsNullOrWhiteSpace(section["AgentHost"]))
+            {
+                return services;
+            }
+
             services
                 .AddOpenTracing()
                 .Configure<TracingSettings>(configuration.GetSection(nameof(TracingSettings)))
@@ -26,11 +33,6 @@ namespace Ajupov.Infrastructure.All.Tracing
                 {
                     var loggerFactory = x.GetRequiredService<ILoggerFactory>();
                     var options = x.GetService<IOptions<TracingSettings>>().Value;
-
-                    if (string.IsNullOrWhiteSpace(options.AgentHost) || options.AgentPort == 0)
-                    {
-                        return NoopTracerFactory.Create();
-                    }
 
                     var senderConfig = new Jaeger.Configuration.SenderConfiguration(loggerFactory)
                         .WithAgentHost(options.AgentHost)
