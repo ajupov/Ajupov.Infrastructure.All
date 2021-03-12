@@ -9,7 +9,7 @@ namespace Ajupov.Infrastructure.All.Api
 {
     public static class ApiExtensions
     {
-        public static IServiceCollection AddControllers(this IServiceCollection services, params Type[] filters)
+        public static IServiceCollection AddApiControllers(this IServiceCollection services, params Type[] filters)
         {
             services
                 .AddControllers(x =>
@@ -22,7 +22,7 @@ namespace Ajupov.Infrastructure.All.Api
             return services;
         }
 
-        public static IServiceCollection AddControllersWithViews(
+        public static IServiceCollection AddApiControllersWithViews(
             this IServiceCollection services,
             params Type[] filters)
         {
