@@ -7,7 +7,7 @@ namespace Ajupov.Infrastructure.All.Logging
 {
     public static class LoggingExtensions
     {
-        private static IConfiguration ConfigureLogging(this IConfiguration configuration)
+        public static IConfiguration ConfigureLogging(this IConfiguration configuration)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
             var applicationVersion = Assembly.GetCallingAssembly().GetName().Version;
