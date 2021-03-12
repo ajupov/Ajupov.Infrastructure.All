@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OpenTracing;
+using OpenTracing.Noop;
 using OpenTracing.Util;
 
 namespace Ajupov.Infrastructure.All.Tracing
@@ -25,6 +26,11 @@ namespace Ajupov.Infrastructure.All.Tracing
                 {
                     var loggerFactory = x.GetRequiredService<ILoggerFactory>();
                     var options = x.GetService<IOptions<TracingSettings>>().Value;
+
+                    if (string.IsNullOrWhiteSpace(options.AgentHost) || options.AgentPort == 0)
+                    {
+                        return NoopTracerFactory.Create();
+                    }
 
                     var senderConfig = new Jaeger.Configuration.SenderConfiguration(loggerFactory)
                         .WithAgentHost(options.AgentHost)

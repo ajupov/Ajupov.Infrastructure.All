@@ -4,7 +4,16 @@ All packages for backend applications
 ## Usage
 1. Add nuget source: `nuget sources add -name GPR -Source https://nuget.pkg.github.com/ajupov`
 2. Install package: `nuget install Ajupov.Infrastructure.All`
-3. Configure `Startup.cs`
+3. Configure `Program.cs`
+```
+return Configuration
+    .GetConfiguration()
+    .ConfigureLogging()
+    .ConfigureHosting<Startup>()
+    .Build()
+    .RunAsync();
+```
+4. Configure `Startup.cs`
 ```
 public class Startup
 {

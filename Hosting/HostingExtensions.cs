@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 
 namespace Ajupov.Infrastructure.All.Hosting
 {
@@ -13,7 +14,8 @@ namespace Ajupov.Infrastructure.All.Hosting
                 .UseConfiguration(configuration)
                 .UseUrls(configuration.GetValue<string>("ApplicationHost"))
                 .UseStartup<TStartup>()
-                .UseKestrel();
+                .UseKestrel()
+                .UseSerilog();
         }
 
         public static IWebHostBuilder ConfigureWebRoot(this IWebHostBuilder builder)

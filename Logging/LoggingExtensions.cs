@@ -1,34 +1,34 @@
 ﻿using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
 
 namespace Ajupov.Infrastructure.All.Logging
 {
     public static class LoggingExtensions
     {
-        public static IWebHostBuilder ConfigureLogging(this IWebHostBuilder hostBuilder, IConfiguration configuration)
+        private static IConfiguration ConfigureLogging(this IConfiguration configuration)
         {
             var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
             var applicationVersion = Assembly.GetCallingAssembly().GetName().Version;
             var host = configuration.GetValue<string>("LoggingHost");
 
-            return hostBuilder.ConfigureLogging(x =>
+            var loggerConfiguration = new LoggerConfiguration()
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("applicationName", applicationName)
+                .Enrich.WithProperty("applicationVersion", applicationVersion)
+                .WriteTo.Console();
+
+            if (!string.IsNullOrWhiteSpace(host))
             {
-                x.ClearProviders();
+                loggerConfiguration.WriteTo.Elasticsearch(host, applicationName, autoRegisterTemplate: true);
+            }
 
-                Log.Logger = new LoggerConfiguration()
-                    .MinimumLevel.Information()
-                    .Enrich.FromLogContext()
-                    .Enrich.WithProperty("applicationName", applicationName)
-                    .Enrich.WithProperty("applicationVersion", applicationVersion)
-                    .WriteTo.Elasticsearch(host, autoRegisterTemplate: true, indexFormat: applicationName)
-                    .WriteTo.Console()
-                    .CreateLogger();
+            Log.Logger = loggerConfiguration.CreateLogger();
 
-                x.AddSerilog(Log.Logger);
-            });
+            return configuration;
         }
     }
 }
