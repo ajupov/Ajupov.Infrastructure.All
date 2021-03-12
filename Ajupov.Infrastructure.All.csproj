@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <PackageVersion>1.9.4</PackageVersion>
+        <PackageVersion>1.9.5</PackageVersion>
         <Authors>U. Ajupov</Authors>
         <RepositoryUrl>https://github.com/ajupov/Ajupov.Infrastructure.All.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
@@ -34,5 +34,6 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.1.0" />
+        <PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.6.0" />
     </ItemGroup>
 </Project>

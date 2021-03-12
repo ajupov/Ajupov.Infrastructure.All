@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Unchase.Swashbuckle.AspNetCore.Extensions.Extensions;
 
 namespace Ajupov.Infrastructure.All.ApiDocumentation
 {
@@ -22,6 +23,7 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
             return services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc(apiVersion, info);
+                x.AddEnumsWithValuesFixFilters();
             });
         }
 

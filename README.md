@@ -6,7 +6,7 @@ All packages for backend applications
 2. Install package: `nuget install Ajupov.Infrastructure.All`
 3. Configure `Program.cs`
 ```
-return Configuration
+await Configuration
     .GetConfiguration()
     .ConfigureLogging()
     .ConfigureHosting<Startup>()
