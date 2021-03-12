@@ -35,7 +35,7 @@ public class Startup
         services
             .AddCookiePolicy()
             .AddSingleOriginCorsPolicy(configuration)
-            .AddControllers(typeof(SomeFilter))
+            .AddApiControllers()
             .AddJwtAuthentication()
             .AddJwtValidator(configuration)
             .AddJwtGenerator()
