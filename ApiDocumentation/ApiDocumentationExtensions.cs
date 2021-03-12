@@ -8,34 +8,38 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
 {
     public static class ApiDocumentationExtensions
     {
-        private const string DefaultApiVersion = "v1";
-
-        public static IServiceCollection AddApiDocumentation(
-            this IServiceCollection services,
-            string apiVersion = DefaultApiVersion)
+        public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
         {
             var info = new OpenApiInfo
             {
-                Title = Assembly.GetCallingAssembly().GetName().Name,
-                Version = apiVersion
+                Title = GetAssemblyName(),
+                Version = GetAssemblyVersion()
             };
 
             return services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc(apiVersion, info);
+                x.SwaggerDoc(info.Version, info);
                 x.AddEnumsWithValuesFixFilters();
             });
         }
 
-        public static IApplicationBuilder UseApiDocumentationsMiddleware(
-            this IApplicationBuilder applicationBuilder,
-            string apiVersion = DefaultApiVersion)
-        {
-            var applicationName = Assembly.GetCallingAssembly().GetName().Name;
 
+        public static IApplicationBuilder UseApiDocumentationsMiddleware(this IApplicationBuilder applicationBuilder)
+        {
             return applicationBuilder
                 .UseSwagger()
-                .UseSwaggerUI(x => x.SwaggerEndpoint($"/swagger/{apiVersion}/swagger.json", applicationName));
+                .UseSwaggerUI(x =>
+                    x.SwaggerEndpoint($"/swagger/{GetAssemblyVersion()}/swagger.json", GetAssemblyName()));
+        }
+
+        private static string GetAssemblyName()
+        {
+            return Assembly.GetCallingAssembly().GetName().Name;
+        }
+
+        private static string GetAssemblyVersion()
+        {
+            return Assembly.GetCallingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
         }
     }
 }
