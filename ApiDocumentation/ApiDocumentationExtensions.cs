@@ -10,10 +10,12 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
     {
         public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
         {
+            var assembly = Assembly.GetCallingAssembly();
+
             var info = new OpenApiInfo
             {
-                Title = GetAssemblyName(),
-                Version = GetAssemblyVersion()
+                Title = GetAssemblyName(assembly),
+                Version = GetAssemblyVersion(assembly)
             };
 
             return services.AddSwaggerGen(x =>
@@ -25,20 +27,23 @@ namespace Ajupov.Infrastructure.All.ApiDocumentation
 
         public static IApplicationBuilder UseApiDocumentationsMiddleware(this IApplicationBuilder applicationBuilder)
         {
+            var assembly = Assembly.GetCallingAssembly();
+
             return applicationBuilder
                 .UseSwagger()
                 .UseSwaggerUI(x =>
-                    x.SwaggerEndpoint($"/swagger/{GetAssemblyVersion()}/swagger.json", GetAssemblyName()));
+                    x.SwaggerEndpoint($"/swagger/{GetAssemblyVersion(assembly)}/swagger.json",
+                        GetAssemblyName(assembly)));
         }
 
-        private static string GetAssemblyName()
+        private static string GetAssemblyName(Assembly assembly)
         {
-            return Assembly.GetCallingAssembly().GetName().Name;
+            return assembly.GetName().Name;
         }
 
-        private static string GetAssemblyVersion()
+        private static string GetAssemblyVersion(Assembly assembly)
         {
-            return Assembly.GetCallingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
+            return assembly.GetName().Version?.ToString(3) ?? "1.0.0";
         }
     }
 }
