@@ -9,7 +9,7 @@ namespace Ajupov.Infrastructure.All.Logging
     {
         public static IConfiguration ConfigureLogging(this IConfiguration configuration)
         {
-            var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
+            var applicationName = Assembly.GetCallingAssembly().GetName().Name?.ToLower();
             var applicationVersion = Assembly.GetCallingAssembly().GetName().Version;
             var host = configuration.GetValue<string>("LoggingHost");
 

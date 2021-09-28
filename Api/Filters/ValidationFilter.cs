@@ -8,14 +8,14 @@ namespace Ajupov.Infrastructure.All.Api.Filters
     {
         public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (!context.ModelState.IsValid)
+            if (context.ModelState.IsValid)
             {
-                context.Result = new BadRequestObjectResult(context.ModelState);
-
-                return Task.CompletedTask;
+                return next();
             }
 
-            return next();
+            context.Result = new BadRequestObjectResult(context.ModelState);
+
+            return Task.CompletedTask;
         }
     }
 }

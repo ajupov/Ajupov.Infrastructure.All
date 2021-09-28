@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OpenTracing;
+using OpenTracing.Mock;
 using OpenTracing.Noop;
 using OpenTracing.Util;
 
@@ -17,7 +18,7 @@ namespace Ajupov.Infrastructure.All.Tracing
     {
         public static IServiceCollection AddTracing(this IServiceCollection services, IConfiguration configuration)
         {
-            var applicationName = Assembly.GetCallingAssembly().GetName().Name.ToLower();
+            var applicationName = Assembly.GetCallingAssembly().GetName().Name?.ToLower();
 
             var section = configuration.GetSection(nameof(TracingSettings));
 
@@ -32,7 +33,12 @@ namespace Ajupov.Infrastructure.All.Tracing
                 .AddSingleton<ITracer>(x =>
                 {
                     var loggerFactory = x.GetRequiredService<ILoggerFactory>();
-                    var options = x.GetService<IOptions<TracingSettings>>().Value;
+                    var options = x.GetService<IOptions<TracingSettings>>()?.Value;
+
+                    if (options == null)
+                    {
+                        return new MockTracer();
+                    }
 
                     var senderConfig = new Jaeger.Configuration.SenderConfiguration(loggerFactory)
                         .WithAgentHost(options.AgentHost)
