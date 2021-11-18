@@ -12,16 +12,7 @@ namespace Ajupov.Infrastructure.All.Orm
             where TStorage : Storage
         {
             services.Configure<OrmSettings>(configuration.GetSection(nameof(OrmSettings)));
-
-            var isTestMode = configuration.GetSection(nameof(OrmSettings)).GetValue<bool>("IsTestMode");
-            if (isTestMode)
-            {
-                services.AddEntityFrameworkInMemoryDatabase();
-            }
-            else
-            {
-                services.AddEntityFrameworkNpgsql();
-            }
+            services.AddEntityFrameworkNpgsql();
 
             return services.AddTransient<TStorage>();
         }

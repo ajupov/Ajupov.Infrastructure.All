@@ -15,14 +15,7 @@ namespace Ajupov.Infrastructure.All.Orm
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            if (_config.IsTestMode)
-            {
-                builder.UseInMemoryDatabase("main");
-            }
-            else
-            {
-                builder.UseNpgsql(_config.MainConnectionString);
-            }
+            builder.UseNpgsql(_config.MainConnectionString);
         }
     }
 }
