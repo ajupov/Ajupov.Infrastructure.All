@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <PackageVersion>1.11.2</PackageVersion>
+        <PackageVersion>1.11.2-pre</PackageVersion>
         <Authors>U. Ajupov</Authors>
         <RepositoryUrl>https://github.com/ajupov/Ajupov.Infrastructure.All.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
