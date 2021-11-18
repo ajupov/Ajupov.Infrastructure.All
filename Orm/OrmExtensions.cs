@@ -1,4 +1,5 @@
-﻿using Ajupov.Infrastructure.All.Orm.Settings;
+﻿using System;
+using Ajupov.Infrastructure.All.Orm.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,8 @@ namespace Ajupov.Infrastructure.All.Orm
             IConfiguration configuration)
             where TStorage : Storage
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             services.Configure<OrmSettings>(configuration.GetSection(nameof(OrmSettings)));
             services.AddEntityFrameworkNpgsql();
 
