@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <PackageVersion>1.10.0</PackageVersion>
+        <TargetFramework>net6.0</TargetFramework>
+        <PackageVersion>1.11.0</PackageVersion>
         <Authors>U. Ajupov</Authors>
         <RepositoryUrl>https://github.com/ajupov/Ajupov.Infrastructure.All.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <NoWarn>SA0001;SA1009;SA1012;SA1013;SA1101;SA1116;SA1117;SA1200;SA1309;SA1413;SA1600;SA1633</NoWarn>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AspNet.Security.OAuth.Instagram" Version="5.0.14" />
-        <PackageReference Include="AspNet.Security.OAuth.MailRu" Version="5.0.14" />
-        <PackageReference Include="AspNet.Security.OAuth.Odnoklassniki" Version="5.0.14" />
-        <PackageReference Include="AspNet.Security.OAuth.Vkontakte" Version="5.0.14" />
-        <PackageReference Include="AspNet.Security.OAuth.Yandex" Version="5.0.14" />
-        <PackageReference Include="Confluent.Kafka" Version="1.8.1" />
+        <PackageReference Include="AspNet.Security.OAuth.Instagram" Version="6.0.0" />
+        <PackageReference Include="AspNet.Security.OAuth.MailRu" Version="6.0.0" />
+        <PackageReference Include="AspNet.Security.OAuth.Odnoklassniki" Version="6.0.0" />
+        <PackageReference Include="AspNet.Security.OAuth.Vkontakte" Version="6.0.0" />
+        <PackageReference Include="AspNet.Security.OAuth.Yandex" Version="6.0.0" />
+        <PackageReference Include="Confluent.Kafka" Version="1.8.2" />
         <PackageReference Include="FluentMigrator" Version="3.3.1" />
         <PackageReference Include="FluentMigrator.Runner" Version="3.3.1" />
         <PackageReference Include="Jaeger" Version="1.0.3" />
         <PackageReference Include="MailKit" Version="2.15.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.0" />
         <PackageReference Include="MimeKit" Version="2.15.1" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
-        <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.7.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
+        <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.8.0" />
         <PackageReference Include="prometheus-net.AspNetCore" Version="5.0.1" />
         <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
         <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
-        <PackageReference Include="ServiceStack.Redis.Core" Version="5.12.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.2.2" />
-        <PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.6.9" />
+        <PackageReference Include="ServiceStack.Redis.Core" Version="5.13.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.2.3" />
+        <PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.6.12" />
     </ItemGroup>
 </Project>
